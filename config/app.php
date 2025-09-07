@@ -124,7 +124,12 @@ return [
     ],
 
     /*
-     * -------------------------
+     * Custom Config
      */
+    // 開發者 Line ID
     'owner_line_user_id' => env('OWNER_LINE_USER_ID'),
+    // ngrok URL
+    'ngrok_url' => env('NGORK_URL'),
+    // 強制使用 HTTPS
+    'force_https' => env('FORCE_HTTPS', false),
 ];

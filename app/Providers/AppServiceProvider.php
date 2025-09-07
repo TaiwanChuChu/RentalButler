@@ -20,8 +20,13 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // 支援 ngrok 便於測試
-        if (!empty(env('NGORK_URL')) && request()->server->has('HTTP_X_FORWARDED_HOST')) {
-            $this->app['url']->forceRootUrl(env('NGORK_URL'));
+        if (!empty(config('app.ngrok_url')) && request()->server->has('HTTP_X_FORWARDED_HOST')) {
+            $this->app['url']->forceRootUrl(config('app.ngrok_url'));
+            $this->app['url']->forceScheme('https');
+        }
+
+        // 強制使用 HTTPS
+        if (config('app.force_https', false)) {
             $this->app['url']->forceScheme('https');
         }
     }

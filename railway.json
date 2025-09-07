@@ -1,0 +1,12 @@
+{
+    "$schema": "https://railway.app/railway.schema.json",
+    "build": {
+        "builder": "nixpacks",
+        "buildCommand": "composer install --no-dev --optimize-autoloader"
+    },
+    "deploy": {
+        "startCommand": "bash -c 'echo \"🚀 啟動 RentalButler...\" && php artisan config:cache && echo \"⚙️ 設定快取完成\" && php artisan route:cache && echo \"🛣️ 路由快取完成\" && php artisan view:cache && echo \"👀 View 快取完成\" && php artisan storage:link 2>/dev/null || echo \"🔗 Storage link 已存在\" && echo \"⏰ 啟動定時任務...\" && php artisan schedule:work & echo \"🌐 啟動 Web 伺服器...\" && exec php artisan serve --host=0.0.0.0 --port=$PORT'",
+        "restartPolicyType": "ON_FAILURE",
+        "restartPolicyMaxRetries": 3
+    }
+}
