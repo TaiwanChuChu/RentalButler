@@ -123,4 +123,8 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    /*
+     * -------------------------
+     */
+    'owner_line_user_id' => env('OWNER_LINE_USER_ID'),
 ];
